@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="upper_hemisphere">
+
+    <link name="upper_hemisphere">
+      <inertial>
+        <origin xyz="0 0 -0.33598" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.22344" ixy="-0.00078" ixz="0" iyy="0.22344" iyz="0" izz="0.19258"/>
+      </inertial>
+      <visual name="node3">
+        <origin xyz="0 0 -0.23098" rpy="1.5708 0 0"/>
+        <geometry>
+          <mesh filename="../meshes/dae/Part__Feature075.dae" scale="10.0 10.0 10.0"/>
+        </geometry>
+        <material name="Part__Feature075"/>
+      </visual>
+      <collision name="node3.000">
+        <origin xyz="0 0 -0.23098" rpy="1.5708 0 0"/>
+        <geometry>
+          <mesh filename="../meshes/dae/Part__Feature075.001.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <material name="Part__Feature075">
+      <color rgba="0.8 0.8 0.8 1.0"/>
+    </material>
+
+  </robot>

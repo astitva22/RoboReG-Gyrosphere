@@ -15,7 +15,7 @@ pb.setAdditionalSearchPath(pybullet_data.getDataPath())
 pb.setGravity(0,0,-9.8)
 
 plane = pb.loadURDF("plane.urdf")
-body = pb.loadURDF("/home/astitva/Projects/robotics/RoboReG-research-Gyrosphere/kinematicsSim/outershell.urdf",[0,0,1.01])
+body = pb.loadURDF("//home/astitva/Projects/robotics/RoboReG-research-Gyrosphere/urdf/GyroSphere.urdf",[0,0,2.5])
  
 fwd = 0
 side = 0   
