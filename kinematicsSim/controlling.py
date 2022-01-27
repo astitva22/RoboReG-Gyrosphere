@@ -84,7 +84,7 @@ if __name__ == "__main__":
         trq_y = I/R*my_controller_x.callback(data_x,target = [[10.0],[0]])[1][0]
         trq_x = I/R*my_controller_y.callback(data_y,target = [[10.0],[0]])[1][0]         #uncomment for 2d op
         
-        p.applyExternalTorque(bot,-1,[trq_x,trq_y,0],p.LINK_FRAME)   #applying the torque
+        p.applyExternalTorque(bot,-1,[trq_x,trq_y,0],p.WORLD_FRAME)   #applying the torque
         
         trq = np.sqrt(trq_x**2+trq_y**2)
 

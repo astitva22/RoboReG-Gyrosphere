@@ -25,10 +25,10 @@ class LQR_control:
 
     def __init__(self):
 
-        self.Q = np.array([[ 500.,   0.,   0.,   0.],
-                           [   0., 500.,   0.,   0.],
-                           [   0.,   0., 500.,   0.],
-                           [   0.,   0.,   0., 500.]])
+        self.Q = np.array([[ 1000.,   0.,   0.,   0.],
+                           [   0., 1000.,   0.,   0.],
+                           [   0.,   0., 1000.,   0.],
+                           [   0.,   0.,   0., 1000.]])
         self.R = [[1000.,    0.],
                   [   0., 1000.]]
         self.K,self.S,self.e = controlpy.synthesis.controller_lqr(A,B,self.Q,self.R)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     p.setGravity(0,0,-9.8)
 
     p.loadURDF("plane.urdf")
-    bot = p.loadURDF(current_dir+"/outershell.urdf",[0,5.0,2.5])
+    bot = p.loadURDF(current_dir+"/outershell.urdf",[0,0.0,2.5])
 
     my_controller = LQR_control()
     print(my_controller.K)
@@ -84,10 +84,13 @@ if __name__ == "__main__":
     
     max_target_disp = 0
     
-    target_x,target_y = -10.0,-10.0
-
-
     
+
+    path = [(0,10),(10,10),(10,-10),(-10,-10),(-10,10),(0,10),(0,0)]
+
+    target_x,target_y = path[0]
+    flag = False
+    i = 0
     while True :
         data = synthesizeData(bot)
         #ax.plot(time.time()-t_mark,p.getBasePositionAndOrientation(bot)[0][0])
@@ -107,13 +110,23 @@ if __name__ == "__main__":
         if(max_target_disp < 0.05):
             print("target reached")
             print(max_target_disp)
+            i+=1
+            if i == 7: 
+                    print("path_complete")
+                    break
+            #if not flag:
+            #    t_mark = time.time()
+            #    flag = True
+            #if(flag and time.time()-t_mark>=5):
+            target_x,target_y = path[i]
+
             #targetx,target_y = 0,0
             
         trq_y = I/R*x_dot[2]
         trq_x = I/R*x_dot[3]
         trq = np.sqrt(trq_x**2+trq_y**2)
 
-        p.applyExternalTorque(bot,-1,[-trq_x,trq_y,0],p.LINK_FRAME)
+        p.applyExternalTorque(bot,-1,[-trq_x,trq_y,0],p.WORLD_FRAME)
         
         #print("data: {} trq: {}".format(data,trq))
 
@@ -129,5 +142,5 @@ if __name__ == "__main__":
         
         p.stepSimulation()
         time.sleep(1./240.)
-
-    plt.show()
+    time.sleep(5)
+    p.closeSimulation()
