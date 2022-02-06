@@ -4,8 +4,6 @@
 
 The State matrix can be expressed as 
 
-![State Matrix](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/State_matrix.png)
-
 <p align="center">
     <img width = "100" hieght = "200" src = "/assets/State_matrix.png">
 </p>
