@@ -6,6 +6,10 @@ The State matrix can be expressed as
 
 ![State Matrix](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/State_matrix.png)
 
+<p align="center">
+    <img width = "100" hieght = "200" src = "/assets/State_matrix.png">
+</p>
+
 #### Dynamics of the simplified model
 
 ![State Equation](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/State_eqn_expanded.png)
@@ -56,15 +60,15 @@ Here we took the step for x = 0.5 as it gives decent accuracy while following gi
 ### A fully functional urdf file for our imporvised mechanism. 
 The designed urdf file is completely ready and can be used for Simulation in pybullet or in any other simulation software with a few tweaks.
 * testing with the base of the bot fixed
-    ![fixed base](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/urdf_fixed-base.webm)
-* Video for mobile operation can be found [here](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/urdf_mobile.webm). Though there is no proper controller for it yet.
+    ![fixed base](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/urdf_fixed-base.mp4)
+* Video for mobile operation can be found [here](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/urdf_mobile.mp4). Though there is no proper controller for it yet.
 
 ### Linear Qudratic Regulator for accurate path following
 We Have designed two controllers for Path following using LQR control.
 * Path following using the current position as the state vector. Video is attached below.
 * Path following using the current velocity as the state vector. Needs a bit more work.
 
-#### ![Curve Following using position control](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/curve_following.webm)
+#### ![Curve Following using position control](https://github.com/astitva22/RoboReG-Gyrosphere/blob/astitva/assets/curve_following.mp4)
 
 # References
 ***
