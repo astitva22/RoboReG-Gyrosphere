@@ -15,12 +15,6 @@ The State Equation can be expressed as
 </p>
 Where alphas and betas are the angles of axis of torques with the base x and y axes. and T standing for torques are our actuations. R represents the radius of the bot and I its moment of inertia
 
-Now to get the system to converge to a specific state, we have various control methods such as- 
-
-1. Proportional-Intergral-Derivative Control
-2. Linear Quadratic Regulator
-3. Model Predictive Control
-
 For our simplified model, we have used Linear Quadratic Regulator or LQR controller. This is because our system is already linear and also with robust nature of LQR controllers.
 
 For our final robot design, we will be using Model Predictive Control,work is in progress for that.
@@ -45,7 +39,7 @@ The cost Matrix for State Q and the cost Matrix for Actuators R were experimentl
 Feeding these to the  controlller_LQR function from controlpy library, we get the bestfitting Eigen value Matrix K for the system to converge to fed the target value.
 
 <p align="center">
- <img  width="300" height="100" src="assets/control_eqn.png">
+ <img  width="600" height="200" src="assets/control_eqn.png">
  <p align="center">
  <i>Final Control equation</i><br> 
 </p>
@@ -63,8 +57,15 @@ if(disp < 0.1):
     target_x += 0.5                         # updating the next state
     target_y = target_function(target_x)    # y as given function of x
 ```
-
 Here we took the step for x = 0.5 as it gives decent accuracy while following given curve.
+
+The desired curve to be followed can be changed from here 
+
+```
+    def target_function(x):      # Return the equation of desired curve, passing through origin
+        return 2*np.sin(x)
+```
+
 
 # Results
 ***
@@ -82,7 +83,7 @@ https://user-images.githubusercontent.com/75927242/152683170-45838170-e293-4642-
 
 ### Linear Qudratic Regulator for accurate path following
 We Have designed two controllers for Path following using LQR control.
-* Path following using the current position as the state vector. Video is attached below.
+* Path following using the current position as the state vector. Video is attached below. Herethe controller was told to follow a sine curve At the end it can be observed that it traces the desired path upto high accuracy.
 * Path following using the current velocity as the state vector. Needs a bit more work.
 
 #### Curve Following using position in 3D space as state
