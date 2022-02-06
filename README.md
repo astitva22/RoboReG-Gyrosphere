@@ -35,10 +35,7 @@ Here are some simulations in PyBullet:
    <img width="480" height="320" src="gif03.gif">
 </p>
 
-
-## Task of the part
-
-### Installation of PyBullet
+#### Installation of PyBullet
 
 The installation of PyBullet is as simple as:
 (sudo)`pip install PyBullet` (Python 2.x), 
