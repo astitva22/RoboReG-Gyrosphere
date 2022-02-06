@@ -13,7 +13,7 @@ The State Equation can be expressed as
 <p align="center">
     <img width = "600" hieght = "300" src = "assets/State_eqn_expanded.png">
 </p>
-Where alphas and betas are the angles of axis of torques with the base x and y axes. and T standing for torques are our actuations.
+Where alphas and betas are the angles of axis of torques with the base x and y axes. and T standing for torques are our actuations. R represents the radius of the bot and I its moment of inertia
 
 Now to get the system to converge to a specific state, we have various control methods such as- 
 
@@ -80,9 +80,7 @@ https://user-images.githubusercontent.com/75927242/152683211-b4be53bd-7ec0-4552-
 
 https://user-images.githubusercontent.com/75927242/152683170-45838170-e293-4642-afdc-fee81c785365.mp4
 
-### Linear Qudr
-
-atic Regulator for accurate path following
+### Linear Qudratic Regulator for accurate path following
 We Have designed two controllers for Path following using LQR control.
 * Path following using the current position as the state vector. Video is attached below.
 * Path following using the current velocity as the state vector. Needs a bit more work.
