@@ -730,6 +730,7 @@
       <child link="omni_wheel.1"/>
       <axis xyz="0 0 1.0"/>
       <limit effort="100.0" velocity="6.28"/>
+      <joint_properties damping = "3" friction = "5"/>
     </joint>
 
     <joint name="omni_wheel.2" type="continuous">
@@ -738,6 +739,7 @@
       <child link="omni_wheel.2"/>
       <axis xyz="0 0 1.0"/>
       <limit effort="100.0" velocity="6.28"/>
+      <joint_properties damping = "3" friction = "5"/>
     </joint>
 
     <joint name="omni_wheel.3" type="continuous">
@@ -746,6 +748,7 @@
       <child link="omni_wheel.3"/>
       <axis xyz="0 0 1.0"/>
       <limit effort="100.0" velocity="6.28"/>
+      <joint_properties damping = "3" friction = "5"/>
     </joint>
 
     <joint name="prismatic_1" type="prismatic">

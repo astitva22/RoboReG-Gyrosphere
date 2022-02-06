@@ -1,3 +1,4 @@
+from cProfile import label
 import numpy as np
 import pybullet as p
 import controlpy
@@ -22,12 +23,12 @@ R = 1.0
 A = np.array([[    0.,   0.,   1.,  0.],
               [    0.,   0.,   0.,  1.],
               [    0.,   0.,   0.,  0.],
-              [    0.,   0.,   0.,  0.]])
-B = np.array([[   0.,  0.],
-              [   0.,  0.],
-              [  R/I,  0.],
-              [   0., R/I]])        
+              [    0.,   0.,   0.,  0.]])   
 
+B = R/I*np.array([[    0.,      0.,      0.],
+                  [    0.,      0.,      0.],
+                  [0.3333, -0.1667,  0.1667],
+                  [    0.,  0.2887, -0.2887]])     
 
 class LQR_control:
 
@@ -37,8 +38,9 @@ class LQR_control:
                            [   0.,1000.,   0.,   0.],
                            [   0.,   0.,   0.,   0.],
                            [   0.,   0.,   0.,   0.]])
-        self.R = [[1000.,    0.],
-                  [   0., 1000.]]
+        self.R = 0.5*np.array([[1000.,    0.,   0.],
+                               [   0., 1000.,   0.],
+                               [   0.,    0.,1000.]])
         self.K,self.S,self.e = controlpy.synthesis.controller_lqr(A,B,self.Q,self.R)
 
     def callback(self,data,target):
@@ -80,7 +82,7 @@ if __name__ == "__main__":
     p.setGravity(0,0,-9.8)
 
     p.loadURDF("plane.urdf")
-    bot = p.loadURDF(current_dir+"/outershell.urdf",[0,0.0,2.5])
+    bot = p.loadURDF(current_dir+"/urdfs/outershell.urdf",[0,0.0,2.5])
 
     my_controller = LQR_control()
     print(my_controller.K)
@@ -95,6 +97,7 @@ if __name__ == "__main__":
 
     target_x,target_y = 0,0
     flag = False
+    flag2 = False
     i = 0
 
     def target_function(x):      # Return the equation of desired curve, passing through origin
@@ -105,8 +108,9 @@ if __name__ == "__main__":
         keys = p.getKeyboardEvents()
         for k,v in keys.items():
             if(k == p.B3G_RETURN and (v & p.KEY_IS_DOWN)): flag = True
+            if(k == ord('p') and (v & p.KEY_IS_DOWN)): flag2 = True
         if(flag): break    
-        
+        if(not flag2): continue
         data = synthesizeData(bot)
         desired_target = [[target_x],
                           [target_y],
@@ -158,7 +162,8 @@ if __name__ == "__main__":
         p.stepSimulation()
         time.sleep(0.001)
     
-    plt.plot(bot_positions_x,bot_positions_y)
-    plt.plot(desired_pos_x,desired_pos_y)
+    plt.plot(bot_positions_x,bot_positions_y,label = 'Path followed by bot')
+    plt.plot(desired_pos_x,desired_pos_y, label = 'desired path')
+    plt.legend()
     plt.show()
     p.disconnect()

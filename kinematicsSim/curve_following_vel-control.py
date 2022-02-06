@@ -55,7 +55,7 @@ if __name__ == '__main__':
     p.setGravity(0,0,-9.8)
 
     plane = p.loadURDF("plane.urdf")
-    bot = p.loadURDF(parent_dir+"/outershell.urdf",[0,0,2.5])
+    bot = p.loadURDF(parent_dir+"/urdfs/outershell.urdf",[0,0,2.5])
 
     my_controller = LQR_controller()
 
@@ -63,6 +63,7 @@ if __name__ == '__main__':
     target_x,target_y = 0,0
     
     bot_positions_x,bot_positions_y = list(),list()
+    desired_pos_x,desired_pos_y = list(),list()
 
     for i in range(5000):
         data = synthesizeData(bot)
@@ -82,6 +83,8 @@ if __name__ == '__main__':
             
             bot_positions_x.append(data[0][0])
             bot_positions_y.append(data[1][0])
+            desired_pos_x.append(target_x)
+            desired_pos_y.append(target_y) 
 
         print(data)
         print(desired_vel)
@@ -108,5 +111,7 @@ if __name__ == '__main__':
         time.sleep(1./240.) 
 
     plt.plot(bot_positions_x,bot_positions_y)
+    plt.plot(desired_pos_x,desired_pos_y, label = 'desired path')
+    plt.legend()
     plt.show()
     p.disconnect()
