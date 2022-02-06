@@ -12,8 +12,10 @@ Gyrosphere is a **ball-shaped** mobile robot with spherical external shape typic
 - Algorithms Used
 - Simulation Results
 - References
+<hr/>
 
 ## Setting up the environment
+<hr/>
 
 ## Pybullet Installation
 Bullet is a **physics engine** that simulates **collision detection, soft and rigid body dynamics**. It has been used in video games as well as for visual effects in movies.PyBullet is an easy to use Python module for physics simulation, robotics, and deep reinforcement learning based on the Bullet Physics SDK.
@@ -87,3 +89,4 @@ cubePos, cubeOrn = p.getBasePositionAndOrientation(boxId)
 print(cubePos,cubeOrn)
 p.disconnect()
 ```
+<hr/>
