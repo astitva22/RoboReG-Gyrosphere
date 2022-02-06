@@ -73,9 +73,11 @@ Here we took the step for x = 0.5 as it gives decent accuracy while following gi
 The designed urdf file is completely ready and can be used for Simulation in pybullet or in any other simulation software with a few tweaks.
 
 * Simulation with the Internal driving unit fixed 
+
 https://user-images.githubusercontent.com/75927242/152683211-b4be53bd-7ec0-4552-bbc6-cfe37ffccaf4.mp4
 
 * Simulaltion with the bot free, WITHOUT any proper controller. The work is in progress for it.
+
 https://user-images.githubusercontent.com/75927242/152683170-45838170-e293-4642-afdc-fee81c785365.mp4
 
 ### Linear Qudr
