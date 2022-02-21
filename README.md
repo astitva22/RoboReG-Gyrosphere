@@ -1,3 +1,87 @@
+# Gyrosphere - The Spherical Bot 
+![](assets/giphy.gif)
+<hr/>
+
+## Introduction
+Gyrosphere is a **ball-shaped** mobile robot with spherical external shape typically made of a spherical shell serving as the body of the robot and an internal driving unit (IDU) that enables the robot to move. Gyrosphere typically moves by rolling over surfaces. The rolling motion is commonly performed by changing the robot's center of mass (i.e., pendulum-driven system).
+
+## Table of Contents
+- Setting up the Environment
+- Pybullet Installation
+- Model of Gyrosphere
+- Algorithms Used
+- Simulation Results
+- References
+<hr/>
+
+## Setting up the environment
+<hr/>
+
+## Pybullet Installation
+Bullet is a **physics engine** that simulates **collision detection, soft and rigid body dynamics**. It has been used in video games as well as for visual effects in movies.PyBullet is an easy to use Python module for physics simulation, robotics, and deep reinforcement learning based on the Bullet Physics SDK.
+
+Given the options, the reason for selecting PyBullet is,
+* It's a lightweight software and opens source with an active community.
+* Built for python development, hence gives more informative and clear approach for beginners. 
+* No external dependencies except a fully working python interpreter.
+
+Here are some simulations in PyBullet:
+
+<p align="center">
+   <img width="480" height="320" src="assets/gif01.gif">
+</p>
+
+For setting up pybullet and/or in case of any problems have a look [here](https://github.com/Robotics-Club-IIT-BHU/Robo-Summer-Camp-20/blob/master/Part1/Subpart%201/README.md)
+# Model of Gyrosphere
+The Sphere model consists of an **Internal driving unit (IDU)** enclosed by two hemispherical shells joined together. The IDU is a tetrahedral skeleton made by joining four cylindrical rods connecting them tetrahedrally. End of the rods are attached with **omni wheels** which are in contact with the internal surface of the spherical unit except the top rod which has a **ball and socket joint** for maintaining the upright position of the IDU. Omniwheels used are controlled by **BLDC motors**. The central mass is attached below the driving unit.
+<p align="center">
+ <img  width="500" height="375" src="assets/gyro_matplotlib-model.png">
+</p>
+<p align="center">
+ <img  width="600" height="300" src="assets/gyro_pybullet_model.png">
+</p>
+
+# Kinematics of Gyrosphere
+Let the angle of rotation of sphere about Z axis be ɸ. Let the angle of rotation of sphere with respect to its centre about X axis be θ.<br>
+So **Rotation matricies** of sphere with respect to the arena are : 
+
+<p align="center">
+ <img  width="300" height="150"  src="assets/z_rot_matrix.gif">
+ <img  width="300" height="150"  src="assets/x_rot_matrix.gif"><br>
+</p>
+
+Here let **(Wr)actual**  be the actual angular velocity of the outersphere with respect to the arena and **(Wr)IDU**  be the angular velocity of the internal driving unit. Then ,
+
+<p align="center">
+ <img  width="300" height="50" src="assets/formula.gif"><br>
+</p>
+
+So we get 
+<p align="center">
+ <img  width="650" height="150" src="assets/step1.gif"><br><br>
+ <img  width="650" height="150" src="assets/step2.gif"><br>
+</p>
+
+We can say that
+<p align="center">
+ <img  width="300" height="100" src="assets/step3.gif"><br>
+</p>
+where W1, W2, W3 are anguler velocities of omni wheels in IDU. 'R' and 'r' are radii of outer sphere and omni wheel respectively.
+Also , from the diagram we can resolute the angular velocity components as<br><br>
+<p align="center">
+ <img  width="500" height="260" src="assets/w_values.gif"><br>
+</p>
+
+So by substituting the values in the relation that we have , we get 
+<p align="center">
+ <img  width="700" height="200" src="assets/step4.gif"><br>
+</p>
+
+Finally, by rearranging it we get the equation for knowing the magnitude of angular velocities of each omni wheel .
+<p align="center">
+ <img  width="650" height="150" src="assets/step5.gif"><br>
+</p>
+
 # Controlling 
 ***
 #### To make the testing of our Control algorithms easier, we considered a spherical ball representing holonomic degrees of freedom for our bot.
