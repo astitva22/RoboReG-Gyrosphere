@@ -1,3 +1,5 @@
+#mathematical model of proposed Design
+
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -65,8 +67,7 @@ u, v = np.mgrid[0:2*np.pi:20j, np.pi*0.75:np.pi:10j]
 x = np.cos(u)*np.sin(v)*0.8
 y = np.sin(u)*np.sin(v)*0.8
 z = np.cos(v)*0.8
-ax.plot_surface(x, y, z,color = 'g')#, cmap ='viridis', edgecolor ='black')
-
+ax.plot_surface(x, y, z,color = 'g')
 theta = np.pi*0.75
 #phi = np.linspace(0,2*np.pi,10)
 #r = np.linspace(0,1,10)
@@ -76,7 +77,7 @@ x = r*np.cos(phi)*np.sin(theta)
 y = r*np.sin(phi)*np.sin(theta)
 z = r*np.cos(theta)
 
-ax.plot_surface(x, y, z, color = 'g')#, cmap ='viridis', edgecolor ='black')
+ax.plot_surface(x, y, z, color = 'g')
 
 
 for i in range(4):

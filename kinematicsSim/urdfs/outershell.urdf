@@ -1,0 +1,110 @@
+<?xml vesrion="1.0"?>
+<robot name="outer_shell">
+ <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0 0 1"/>
+  </material>  
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<sphere radius="1.0"/>
+			</geometry>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="1.0"/>
+			</geometry>		
+		</collision>
+		<inertial>
+			<mass value = "1"/>
+			<inertia
+				ixx = "0.6667"
+				ixy = "0"
+				ixz = "0"
+				iyy = "0.6667"
+				iyz = "0"
+				izz = "0.6667"
+			/>	
+		</inertial>
+	</link>	
+	<link name="marker1">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.05"/>
+			</geometry>
+			<material name = "blue"/>
+		</visual>
+		<inertial>
+			<mass value = "0.0"/>
+			<inertia
+				ixx = "0"
+				ixy = "0"
+				ixz = "0"
+				iyy = "0"
+				iyz = "0"
+				izz = "0"
+			/>
+		</inertial>
+	</link>
+	<joint name="base_marker_joint1" type="fixed">
+		<parent link = "base_link"/>
+		<child link = "marker1"/>
+		<origin xyz = "0 0 0.99"/>
+	</joint>
+	<link name="marker2">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.05"/>
+			</geometry>
+			<material name = "red"/>
+		</visual>
+		<inertial>
+			<mass value = "0.0"/>
+			<inertia
+				ixx = "0"
+				ixy = "0"
+				ixz = "0"
+				iyy = "0"
+				iyz = "0"
+				izz = "0"
+			/>
+		</inertial>
+	</link>
+	<joint name="base_marker_joint2" type="fixed">
+		<parent link = "base_link"/>
+		<child link = "marker2"/>
+		<origin xyz = "0.99 0 0" rpy = " 0 1.57 0"/>
+	</joint>
+	<link name="marker3">
+		<visual>
+			<geometry>
+				<cylinder length="0.01" radius="0.05"/>
+			</geometry>
+			<material name = "black"/>
+		</visual>
+		<inertial>
+			<mass value = "0.0"/>
+			<inertia
+				ixx = "0"
+				ixy = "0"
+				ixz = "0"
+				iyy = "0"
+				iyz = "0"
+				izz = "0"
+			/>
+		</inertial>
+	</link>
+	<joint name="base_marker_joint3" type="fixed">
+		<parent link = "base_link"/>
+		<child link = "marker3"/>
+		<origin xyz = "0 0.99 0" rpy = "1.57 0 0"/>
+	</joint>		
+</robot>
